@@ -1,6 +1,6 @@
 # asdf-conftest
 
-[![Build Status](https://travis-ci.com/stefansedich/asdf-conftest.svg?branch=master)](https://travis-ci.com/stefansedich/asdf-conftest)
+[![Build Status](https://travis-ci.org/looztra/asdf-conftest.svg?branch=master)](https://travis-ci.org/looztra/asdf-conftest)
 
 [conftest](https://github.com/instrumenta/conftest) plugin for the [asdf](https://github.com/asdf-vm/asdf) version manager.
 
