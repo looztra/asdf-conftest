@@ -69,7 +69,7 @@ get_download_url() {
   local filename
   filename="$(get_filename "$version" "$platform" "$binary_name")"
 
-  echo "https://github.com/instrumenta/conftest/releases/download/${version}/${filename}"
+  echo "https://github.com/open-policy-agent/conftest/releases/download/${version}/${filename}"
 }
 
 tmp_download_dir="$(mktemp -d -t 'asdf_XXXXXXXX')"
