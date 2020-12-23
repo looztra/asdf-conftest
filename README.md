@@ -3,6 +3,10 @@
 ![AllInOne](https://github.com/looztra/asdf-conftest/workflows/AllInOne/badge.svg)
 [![GitHub license](https://img.shields.io/github/license/looztra/asdf-conftest?style=plastic)](https://github.com/looztra/asdf-conftest/blob/master/LICENSE)
 
+## Build History
+
+[![Build history](https://buildstats.info/github/chart/looztra/asdf-conftest?branch=master)](https://github.com/looztra/asdf-conftest/actions)
+
 ## conftest
 
 <https://github.com/open-policy-agent/conftest>
