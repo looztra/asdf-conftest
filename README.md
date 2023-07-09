@@ -1,52 +1,61 @@
-# Conftest
+# asdf-conftest
 
-[![Go Report Card](https://goreportcard.com/badge/open-policy-agent/opa)](https://goreportcard.com/report/open-policy-agent/conftest) [![Netlify](https://api.netlify.com/api/v1/badges/2d928746-3380-4123-b0eb-1fd74ba390db/deploy-status)](https://app.netlify.com/sites/vibrant-villani-65041c/deploys)
+[![Build](https://github.com/looztra/asdf-conftest/actions/workflows/build.yml/badge.svg)](https://github.com/looztra/asdf-conftest/actions/workflows/build.yml)
+[![Lint](https://github.com/looztra/asdf-conftest/actions/workflows/lint.yml/badge.svg)](https://github.com/looztra/asdf-conftest/actions/workflows/lint.yml)
 
-Conftest helps you write tests against structured configuration data. Using Conftest you can
-write tests for your Kubernetes configuration, Tekton pipeline definitions, Terraform code,
-Serverless configs or any other config files.
+[conftest](https://github.com/open-policy-agent/conftest) plugin for the [asdf version manager](https://asdf-vm.com).
 
-Conftest uses the Rego language from [Open Policy Agent](https://www.openpolicyagent.org/) for writing
-the assertions. You can read more about Rego in [How do I write policies](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html)
-in the Open Policy Agent documentation.
+</div>
 
-Here's a quick example. Save the following as `policy/deployment.rego`:
+## Contents
 
-```rego
-package main
+- [asdf-conftest](#asdf-conftest)
+  - [Contents](#contents)
+  - [Dependencies](#dependencies)
+  - [Install](#install)
+  - [Contributing](#contributing)
+  - [License](#license)
 
-deny[msg] {
-  input.kind == "Deployment"
-  not input.spec.template.spec.securityContext.runAsNonRoot
+## Dependencies
 
-  msg := "Containers must not run as root"
-}
+- `bash`, `curl`, `tar`: generic POSIX utilities.
+- `GITUB_API_TOKEN` set this environment variable (must be a valid [Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)) in your shell config to load the correct version of tool x.
 
-deny[msg] {
-  input.kind == "Deployment"
-  not input.spec.selector.matchLabels.app
+## Install
 
-  msg := "Containers must provide app label for pod selectors"
-}
+Plugin:
+
+```shell
+asdf plugin add conftest
+# or
+asdf plugin add conftest https://github.com/looztra/asdf-conftest.git
 ```
 
-Assuming you have a Kubernetes deployment in `deployment.yaml` you can run Conftest like so:
+conftest:
 
-```console
-$ conftest test deployment.yaml
-FAIL - deployment.yaml - Containers must not run as root
-FAIL - deployment.yaml - Containers must provide app label for pod selectors
+```shell
+# Show all installable versions
+asdf list all conftest
 
-2 tests, 0 passed, 0 warnings, 2 failures, 0 exceptions
+# Install specific version
+asdf install conftest latest
+
+# Set a version globally (on your ~/.tool-versions file)
+asdf global conftest latest
+
+# Now conftest commands are available
+conftest --version
 ```
 
-Conftest isn't specific to Kubernetes. It will happily let you write tests for any configuration files in a variety of different formats. See the [documentation](https://www.conftest.dev/) for [installation instructions](https://www.conftest.dev/install/) and
-more details about the features.
+Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
+install & manage versions.
 
-## Want to contribute to Conftest?
+## Contributing
 
-* See [DEVELOPMENT.md](DEVELOPMENT.md) to build and test Conftest itself.
-* See [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
+Contributions of any kind welcome! See the [contributing guide](contributing.md).
 
-For discussions and questions join us on the [Open Policy Agent Slack](https://slack.openpolicyagent.org/)
-in the `#opa-conftest` channel.
+[Thanks goes to these contributors](https://github.com/looztra/asdf-conftest/graphs/contributors)!
+
+## License
+
+See [LICENSE](LICENSE) © [Christophe Furmaniak](https://github.com/looztra/)
