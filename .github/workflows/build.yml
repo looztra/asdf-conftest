@@ -29,6 +29,7 @@ jobs:
         run: |
           sudo apt-get install bats
           bats --version
+      - uses: actions/checkout@v3
       - name: Test plugin with bats
         run: |
           bats test
