@@ -6,4 +6,5 @@ shellcheck --shell=bash --external-sources \
   scripts/*
 
 shfmt --language-dialect bash --indent 2 --diff \
-  ./**/*
+  ./bin/* \
+  ./lib/*
