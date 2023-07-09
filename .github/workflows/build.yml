@@ -1,0 +1,42 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  plugin_test:
+    name: asdf plugin test
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: asdf_plugin_test
+        uses: asdf-vm/actions/plugin-test@v2
+        with:
+          command: conftest --version
+
+  plugin_integration_tests:
+    name: Integration tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install bats
+        run: |
+          sudo apt-get install bats
+          bats --version
+      - name: setup asdf
+        uses: asdf-vm/actions/setup@v2
+      - name: Test plugin with bats
+        run: |
+          asdf plugin-add conftest "$GITHUB_WORKSPACE"
+          bats test
