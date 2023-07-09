@@ -1,6 +1,6 @@
 # asdf-conftest
 
-![AllInOne](https://github.com/looztra/asdf-conftest/workflows/AllInOne/badge.svg)
+![AllInOne](https://github.com/looztra/asdf-conftest/actions/workflows/aio.yml/badge.svg)
 [![GitHub license](https://img.shields.io/github/license/looztra/asdf-conftest?style=plastic)](https://github.com/looztra/asdf-conftest/blob/master/LICENSE)
 
 ## Build History
@@ -29,5 +29,4 @@ This source code has been generated with :
 cookiecutter --overwrite-if-exists --directory plugins/conftest --no-input https://github.com/looztra/cookiecutter-asdf-plugin
 
 ```
-
 
